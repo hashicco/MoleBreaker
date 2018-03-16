@@ -2,39 +2,80 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
-	private bool isFinished = false;
-	private bool isResultOpened = false;
-	private int restTime = 0;
+	private bool isFinished;
+	private bool isResultOpened;
+	private float restTime;
+	private int currentScore;
+	private int highScore;
+
+	GameObject uiTextTime;
+	GameObject uiTextCurrentScore;
+	GameObject uiTextHighScore;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		isFinished = false;
 		isResultOpened = false;
-		restTime = 10;
+		restTime = 60.0F;
+		currentScore = 0;
+
+		uiTextTime = GameObject.Find ("TextTime");
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		if (Input.GetMouseButtonDown (0)) {
-			if (!isFinished) {
-				Finish ();
-			}
+	void Update () 
+	{
+		UpdateRestTime ();
+		UpdateCurrentScore ();
+		UpdateHighScore ();
+
+		CheckRestTime ();
+	}
+
+	void UpdateRestTime()
+	{
+		restTime -= Time.deltaTime;
+		if (restTime < 0.0F) {
+			restTime = 0.0F;
 		}
 
-		if (isFinished && !isResultOpened) {
+		uiTextTime.GetComponent<TextTimeScript>().SetTime (restTime);
+	}
+
+	void UpdateCurrentScore()
+	{
+
+	}
+
+	void UpdateHighScore()
+	{
+
+	}
+
+	void CheckRestTime()
+	{
+		if (restTime == 0.0F) {
+			FinishGame ();
+		}
+	}
+
+	void FinishGame()
+	{
+		if (!isFinished) {
+			isFinished = true;
 			OpenGameResultScene ();
 		}
 	}
 
-	void Finish(){
-		isFinished = true;
-	}
-
 	public void OpenGameResultScene()
 	{
-		isResultOpened = true;
-		SceneManager.LoadScene("GameResult", LoadSceneMode.Additive);
+		if (!isResultOpened) {
+			isResultOpened = true;
+			SceneManager.LoadScene ("GameResult", LoadSceneMode.Additive);
+		}
 	}
 }
