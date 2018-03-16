@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class BaseController : MonoBehaviour {
-	public static int current_score = 0;
-	public static int high_score = 0;
-	public static int[] top_scores = new int[10];
+	int highScore = 0;
+	int[] topScores = new int[10];
 
 	// Use this for initialization
 	void Start () {
@@ -18,4 +17,16 @@ public class BaseController : MonoBehaviour {
 	void Update () {
 		
 	}
+
+	public int GetHighScore()
+	{
+		return this.highScore;
+	}
+
+	public int SetHighScore(int score)
+	{
+		this.highScore = score;
+		return this.highScore;
+	}
+
 }

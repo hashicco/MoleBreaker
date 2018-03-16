@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TextTimeScript : MonoBehaviour {
-	private float time;
+public class TextBase : MonoBehaviour {
+	private string text;
 
 	// Use this for initialization
 	void Start () {		
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		GetComponent<Text>().text = "Time : " + time.ToString("F2");
+		this.text = "";
 	}
 
-	public void SetTime(float time)
+	// Update is called once per frame
+	void Update () {
+		GetComponent<Text>().text = this.text;
+	}
+
+	public void SetText(string text)
 	{
-		this.time = time;
+		this.text = text;
 	}
 
 }
