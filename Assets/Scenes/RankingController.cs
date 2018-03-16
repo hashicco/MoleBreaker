@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TitleController : MonoBehaviour {
+public class RankingController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -12,15 +12,12 @@ public class TitleController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
 	}
 
-	public void TransitionToGameScene()
-	{
-		SceneManager.LoadScene("Game");
-	}
 
-	public void TransitionToRankingScene()
+	public void TransitionToTitleScene()
 	{
-		SceneManager.LoadScene("Ranking");
+		SceneManager.LoadScene("Title");
 	}
 }
