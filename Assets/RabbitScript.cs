@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HamsterScript : MonoBehaviour {
+public class RabbitScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -13,10 +13,4 @@ public class HamsterScript : MonoBehaviour {
 	void Update () {
 		
 	}
-
-	public int GetScore(){
-		return 10;
-	}
-
-
 }

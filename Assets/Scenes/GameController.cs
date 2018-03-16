@@ -48,7 +48,6 @@ public class GameController : MonoBehaviour {
 		uiTextCurrentScore.SetScore (currentScore);
 		uiTextHighScore.SetScore (highScore);
 
-		EnemyControl ();
 		PlayerControl ();
 
 		CheckHighScore ();
@@ -59,16 +58,7 @@ public class GameController : MonoBehaviour {
 		currentScore+= score;
 		return currentScore;
 	}
-
-	void EnemyControl ()
-	{
-		var enemyHamster = Resources.Load ("Prefabs/Enemy/Hamster");
-//		Vector3 screenPos = new Vector3(cRandom.Next(480), cRandom.Next(200) - 100, 5) ;
-//		Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
-		Vector3 worldPos = new Vector3(Random.Range(-4.5f, 4.5f), Random.Range(0.0f, -2.0f), 0.0f);
-		var enemyInstance = Instantiate (enemyHamster, worldPos, Quaternion.identity) as GameObject;
-	}
-
+		
 	void PlayerControl()
 	{
 		if (isControllable && Input.GetMouseButtonDown (0)) {
