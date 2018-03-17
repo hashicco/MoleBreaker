@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HamsterScript : MonoBehaviour {
+public class TextHighScoreNotice : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -14,9 +14,7 @@ public class HamsterScript : MonoBehaviour {
 		
 	}
 
-	public int GetScore(){
-		return 10;
+	public void Hide(){
+		gameObject.SetActive (false);
 	}
-
-
 }

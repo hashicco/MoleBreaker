@@ -8,8 +8,8 @@ public class GameController : MonoBehaviour {
 	private bool isFinished;
 	private bool isResultOpened;
 	private bool isControllable;
-	private float defaultRestTime = 60.0F;
-	private float uncontrollableTime = 1.0F;
+	private float defaultRestTime = 15.0F;
+	private float uncontrollableTime = 0.5F;
 	private float restTime;
 	private int currentScore;
 	private int highScore;
@@ -29,9 +29,8 @@ public class GameController : MonoBehaviour {
 		isControllable = false;
 		restTime = defaultRestTime;
 
-//		baseController = GameObject.Find ("BaseController").GetComponent<BaseController> ();
-//		highScore = baseController.GetHighScore ();
-		highScore = 0;
+		baseController = GameObject.Find ("BaseController").GetComponent<BaseController> ();
+		highScore = baseController.GetHighScore ();
 		currentScore = 0;
 		isHighScore = false;
 
@@ -103,6 +102,7 @@ public class GameController : MonoBehaviour {
 			isFinished = true;
 			isControllable = false;
 			OpenGameResultScene ();
+			baseController.UpdateTopScores (currentScore);
 		}
 	}
 

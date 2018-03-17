@@ -26,9 +26,14 @@ public class HammerScript : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Enemy")
 		{
-			gameController.AddScore (10);
+			var enemy = other.gameObject.GetComponent<Enemy> ();
+			enemy.AddDamage (1);
+			if (enemy.IsDead ()) {
+				gameController.AddScore (enemy.GetScore());
+				Destroy (other.gameObject);
+			}
 			audioSource.PlayOneShot (soundHit);
-			Destroy (other.gameObject);
+			Destroy (this);
 		}
 	}
 
