@@ -44,4 +44,8 @@ public class BaseController : MonoBehaviour {
 		this.highScore = topScores [0];
 	}
 
+	public int[] GetTopScores(){
+		return topScores;
+	}
+
 }
